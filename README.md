@@ -12,8 +12,6 @@ Low-shot counters estimate the number of objects corresponding to a selected cat
 
 # DAVE Installation Guide
 
-## Installation
-
 To install and set up the DAVE environment, follow these steps:
 
 1. **Create a Conda environment and install dependencies:**
