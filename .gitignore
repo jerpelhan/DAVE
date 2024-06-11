@@ -128,7 +128,7 @@ lightning_logs/
 MNIST
 .DS_Store
 
-
+*.zip
 
 *.pth
 *.json
