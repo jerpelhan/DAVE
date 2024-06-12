@@ -1,4 +1,5 @@
 # DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/object-counting-on-fsc147)](https://paperswithcode.com/sota/object-counting-on-fsc147?p=dave-a-detect-and-verify-paradigm-for-low)
 
 This repository holds the official Pytorch implementation for the paper [DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting](https://arxiv.org/pdf/2404.16622) accepted at CVPR 2024.
 
@@ -28,7 +29,7 @@ To install and set up the DAVE environment, follow these steps:
     ```
    Additionally, if you will run text-prompt-based counting install also:
    ```bash
-       conda install transformers
+   conda install transformers
    ```
 
 2. **Download the models:**
