@@ -12,6 +12,16 @@ from torchvision import transforms as T
 from torchvision.transforms import functional as TVF
 
 def resize(img, bboxes):
+    resize_img = T.Resize((512, 512), antialias=True)
+    w, h = img.size
+    img = T.Compose([
+        T.ToTensor(),
+        resize_img,
+        T.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225])
+    ])(img)
+    scale = torch.tensor([1.0, 1.0]) / torch.tensor([w, h]) * 512
+    bboxes = bboxes / torch.tensor([w, h, w, h]) * 512
+
     scale_x = min(1.0, 50 / (bboxes[:, 2] - bboxes[:, 0]).mean())
     scale_y = min(1.0, 50 / (bboxes[:, 3] - bboxes[:, 1]).mean())
 
@@ -30,9 +40,10 @@ def resize(img, bboxes):
         scale_x = (int(img.shape[2] * scale_x) // 8 * 8) / img.shape[2]
         resize_ = T.Resize((int(img.shape[1] * scale_y), int(img.shape[2] * scale_x)), antialias=True)
         img = resize_(img)
+    scale = scale * torch.tensor([scale_x, scale_y])
 
     bboxes = bboxes * torch.tensor([scale_x, scale_y, scale_x, scale_y])
-    return img, bboxes
+    return img, bboxes.float(), scale
 
 def pad_image(image_tensor):
     target_size = (512, 512)
