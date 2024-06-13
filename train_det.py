@@ -193,7 +193,7 @@ def train(args):
         train_loader.sampler.set_epoch(epoch)
         model.train()
 
-        for img, bboxes, density_map, ids, scale_x, scale_y in train_loader:
+        for img, bboxes, density_map, ids, scale_x, scale_y, _ in train_loader:
             img = img.to(device)
             bboxes = bboxes.to(device)
             density_map = density_map.to(device)
@@ -238,7 +238,7 @@ def train(args):
 
         model.eval()
         with torch.no_grad():
-            for img, bboxes, density_map, ids, scale_x, scale_y in val_loader:
+            for img, bboxes, density_map, ids, scale_x, scale_y,_ in val_loader:
                 gt_bboxes, _ = val.get_gt_bboxes(ids)
                 img = img.to(device)
                 bboxes = bboxes.to(device)

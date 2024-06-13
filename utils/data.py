@@ -191,6 +191,7 @@ class FSC147WithDensityMapDOWNSIZE(Dataset):
             density_map = density_map / density_map.sum() * original_sum
             shape = img_.shape
             img = pad_image(img_)
+            density_map = pad_image(density_map)
 
         else:
             scale_x = 1.0

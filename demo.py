@@ -3,7 +3,7 @@ from models.dave import build_model
 from utils.arg_parser import get_argparser
 import argparse
 import torch
-
+import os
 import matplotlib.patches as patches
 from PIL import Image
 
@@ -50,9 +50,13 @@ def demo(args):
         device_ids=[gpu],
         output_device=gpu
     )
-    state_dict = torch.load('results/DAVE_3_shot.pth')['model']
-    state_dict = {k if 'module.' in k else 'module.' + k: v for k, v in state_dict.items()}
-    model.load_state_dict(state_dict, strict=False)
+    model.load_state_dict(
+        torch.load(os.path.join(args.model_path, 'DAVE_3_shot.pth'))['model'], strict=False
+    )
+    pretrained_dict_feat = {k.split("feat_comp.")[1]: v for k, v in
+                            torch.load(os.path.join(args.model_path, 'verification.pth'))[
+                                'model'].items() if 'feat_comp' in k}
+    model.module.feat_comp.load_state_dict(pretrained_dict_feat)
     model.eval()
 
     image = Image.open(img_path).convert("RGB")
@@ -86,6 +90,6 @@ def demo(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser('LOCA', parents=[get_argparser()])
+    parser = argparse.ArgumentParser('DAVE', parents=[get_argparser()])
     args = parser.parse_args()
     demo(args)
