@@ -38,7 +38,7 @@ def on_release(event):
 
 @torch.no_grad()
 def demo(args):
-    img_path = "results//7.jpg"
+    img_path = "material//7.jpg"
     global fig, ax
 
     gpu = 0
