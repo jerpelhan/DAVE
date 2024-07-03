@@ -119,7 +119,7 @@ def demo(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('DAVE', parents=[get_argparser()])
     parser.add_argument('--img_path', type=Path)
-    parser.add_argument('--out_path', type=Path)
+    parser.add_argument('--out_path', type=Path, default="material")
     parser.add_argument('--show', action='store_true')
     parser.add_argument('--two_passes', action='store_true')
     args = parser.parse_args()
