@@ -7,9 +7,9 @@ import numpy as np
 from torch import Tensor
 from torch.utils.data import Dataset
 import torch
-import torchvision.transforms.functional as FT
 from torchvision import transforms as T
 from torchvision.transforms import functional as TVF
+
 
 def resize(img, bboxes):
     resize_img = T.Resize((512, 512), antialias=True)
@@ -45,6 +45,7 @@ def resize(img, bboxes):
     bboxes = bboxes * torch.tensor([scale_x, scale_y, scale_x, scale_y])
     return img, bboxes.float(), scale
 
+
 def pad_image(image_tensor):
     target_size = (512, 512)
     original_size = image_tensor.size()[1:]
@@ -52,7 +53,7 @@ def pad_image(image_tensor):
     # Calculate the amount of padding needed for each dimension
     pad_height = max(target_size[0] - original_size[0], 0)
     pad_width = max(target_size[1] - original_size[1], 0)
-    padded_image = FT.pad(image_tensor, (0, 0, pad_width, pad_height))
+    padded_image = TVF.pad(image_tensor, (0, 0, pad_width, pad_height))
     return padded_image
 
 
@@ -253,7 +254,6 @@ class FSC147WithDensityMapDOWNSIZE(Dataset):
             img_name = v["file_name"]
             map_name_2_id[img_name] = img_id
         return map_name_2_id
-
 
 
 def tiling_augmentation(img, bboxes, density_map, dmap, mask, resize, jitter, tile_size, hflip_p):

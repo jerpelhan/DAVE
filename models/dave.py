@@ -246,7 +246,6 @@ class COTR(nn.Module):
         return location
 
     def predict_density_map(self, backbone_features, bboxes):
-
         bs, _, bb_h, bb_w = backbone_features.size()
 
         # # prepare the encoder input
