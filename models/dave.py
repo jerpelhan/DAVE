@@ -54,8 +54,7 @@ class COTR(nn.Module):
             s_t: float,
             egv: float,
             norm_s: bool,
-            det_train: bool,
-            is_zero_demo: bool
+            det_train: bool
     ):
 
         super(COTR, self).__init__()
@@ -135,8 +134,6 @@ class COTR(nn.Module):
                     torch.empty((self.num_objects, self.kernel_dim ** 2, emb_dim))
                 )
                 nn.init.normal_(self.objectness)
-        
-        self.is_zero_demo = is_zero_demo
 
     def clip_check_clusters(self, img, bboxes, category, img_name=None):
         bboxes = extend_bboxes(bboxes)
@@ -371,8 +368,7 @@ class COTR(nn.Module):
         return correlation_maps, outputs_R, outputR
 
     def forward(self, x_img, bboxes, name='', dmap=None, classes=None):
-        if not self.is_zero_demo:
-            self.num_objects = bboxes.shape[1]
+        self.num_objects = bboxes.shape[1]
         backbone_features = self.backbone(x_img)
         bs, _, bb_h, bb_w = backbone_features.size()
 
@@ -527,7 +523,7 @@ class COTR(nn.Module):
         return outputR, [], tblr, exemplar_bboxes
 
 
-def build_model(args, is_zero_demo=False):
+def build_model(args):
     return COTR(
         image_size=args.image_size,
         num_encoder_layers=args.num_enc_layers,
@@ -558,6 +554,5 @@ def build_model(args, is_zero_demo=False):
         norm_s=args.norm_s,
         egv=args.egv,
         prompt_shot=args.prompt_shot,
-        det_train=args.det_train,
-        is_zero_demo=is_zero_demo
+        det_train=args.det_train
     )

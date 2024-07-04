@@ -36,7 +36,7 @@ def demo(args):
     device = torch.device(gpu)
 
     model = DataParallel(
-        build_model(args, is_zero_demo=True).to(device),
+        build_model(args).to(device),
         device_ids=[gpu],
         output_device=gpu
     )
@@ -49,12 +49,13 @@ def demo(args):
     model.module.feat_comp.load_state_dict(pretrained_dict_feat)
     model.eval()
 
+    bboxes = torch.zeros((1, 3, 4))
+
     def one_img(img_path):
         scale_x = scale_y = 1
         image = Image.open(img_path).convert("RGB")
         img, scale = resize(image, args.image_size)
         img = img.unsqueeze(0).to(device)
-        bboxes = torch.tensor([]).unsqueeze(0).to(device)
 
         denisty_map, _, _, predicted_bboxes = model(img, bboxes=bboxes)
 
