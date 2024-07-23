@@ -525,7 +525,7 @@ class FSC147WithDensityMapSimilarityStitched(Dataset):
         self.diag_opt = 70
 
     def __getitem__(self, idx: int) -> Tuple[Tensor, List[Tensor], Tensor]:
-        img_name = list(self.annotations.keys())[idx]
+        img_name = self.image_names[idx]
         img = Image.open(os.path.join(
             self.data_path,
             'images_384_VarV2',
@@ -552,7 +552,7 @@ class FSC147WithDensityMapSimilarityStitched(Dataset):
 
         if self.train_stitched:
             img_class = self.classes[self.image_names[idx]]
-            candidate_images = [im for im, cl in self.classes.items() if cl != img_class]
+            candidate_images = [img for img, cl in self.classes.items() if cl != img_class and img in self.image_names]
             sampled = [candidate_images[j] for j in torch.randperm(len(candidate_images))[:1]][0]
             sampled_img = Image.open(os.path.join(
                 self.data_path,
