@@ -61,11 +61,11 @@ To install and set up the DAVE environment, follow these steps:
 If you use DAVE in your research, please cite the following paper:
 
 ```bibtex
-@InProceedings{Pelhan_2024_CVPR,
-author = {Jer Pelhan and Alan Lukežič and Vitjan Zavrtanik and Matej Kristan},
-title = {DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting},
-booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
-month = {June},
-year = {2024}
+@inproceedings{pelhan2024dave,
+  title={DAVE-A Detect-and-Verify Paradigm for Low-Shot Counting},
+  author={Pelhan, Jer and Zavrtanik, Vitjan and Kristan, Matej and others},
+  booktitle={Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition},
+  pages={23293--23302},
+  year={2024}
 }
 ```
