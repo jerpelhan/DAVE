@@ -62,7 +62,7 @@ If you use DAVE in your research, please cite the following paper:
 
 ```bibtex
 @InProceedings{Pelhan_2024_CVPR,
-    author    = {Pelhan, Jer and Luke\v{z}i?, Alan and Zavrtanik, Vitjan and Kristan, Matej},
+    author    = {Pelhan, Jer and Luke\v{z}c?, Alan and Zavrtanik, Vitjan and Kristan, Matej},
     title     = {DAVE - A Detect-and-Verify Paradigm for Low-Shot Counting},
     booktitle = {Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)},
     month     = {June},
