@@ -1,3 +1,8 @@
+We wanted to share an update regarding this repository. We've developed a novel method, GeCo, which significantly outperforms the older approach in this repo by a large margin. You can check out the code and an easy-to-run demo [here](https://github.com/jerpelhan/GeCo).
+
+ ---
+ 
+
 # DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/few-shot-object-counting-and-detection-on)](https://paperswithcode.com/sota/few-shot-object-counting-and-detection-on?p=dave-a-detect-and-verify-paradigm-for-low)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/object-counting-on-fsc147)](https://paperswithcode.com/sota/object-counting-on-fsc147?p=dave-a-detect-and-verify-paradigm-for-low)
