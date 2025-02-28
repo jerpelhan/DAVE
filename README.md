@@ -6,7 +6,7 @@ We wanted to share an update regarding this repository. We've developed a novel 
 # DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/few-shot-object-counting-and-detection-on)](https://paperswithcode.com/sota/few-shot-object-counting-and-detection-on?p=dave-a-detect-and-verify-paradigm-for-low)
 [![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/object-counting-on-fsc147)](https://paperswithcode.com/sota/object-counting-on-fsc147?p=dave-a-detect-and-verify-paradigm-for-low)
-
+[![PWC](https://img.shields.io/endpoint.svg?url=https://paperswithcode.com/badge/dave-a-detect-and-verify-paradigm-for-low/zero-shot-counting-on-fsc147)](https://paperswithcode.com/sota/zero-shot-counting-on-fsc147?p=dave-a-detect-and-verify-paradigm-for-low)
 
 This repository holds the official Pytorch implementation for the paper [DAVE – A Detect-and-Verify Paradigm for Low-Shot Counting](https://arxiv.org/pdf/2404.16622) accepted at CVPR 2024.
 
